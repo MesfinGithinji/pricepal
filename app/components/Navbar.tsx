@@ -24,7 +24,6 @@ const Navbar = () => {
                     Price<span className="text-primary">Dropp</span>
                 </p>
             </Link>
-
             <div className="flex items-center gap-5">
                 {navIcons.map((icon)=>
                     <Image 
