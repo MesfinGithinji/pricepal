@@ -9,13 +9,12 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: "#FFA500", // Orange color
-          "dark-orange": "#FF8C00", // Darker orange shade
-          "yellow": "#FFD700", // Yellow color
-          "dark-yellow": "#FFA500" // Darker yellow shade
+          DEFAULT: "#E43030",
+          "orange": "#D48D3B",
+          "green": "#3E9242"
         },
-        secondary: "#1E1E1E", // Dark gray background
-        "gray-200": "#333333", // Darker gray
+        secondary: "#282828",
+        "gray-200": "#EAECF0",
         "gray-300": "D0D5DD",
         "gray-500": "#667085",
         "gray-600": "#475467",
@@ -43,4 +42,3 @@ module.exports = {
   },
   plugins: [],
 };
-
