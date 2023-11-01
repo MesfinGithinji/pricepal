@@ -26,7 +26,7 @@ const Searchbar = () => {
     //keep track of the url property using useState
     const [searchPrompt, setSearchPrompt]= useState('');
 
-    //new useState field to handle what happens after the link is clicked
+    //new useState field to handle what happens after the button is clicked
     const [isLoading,setIsLoading] = useState(false);
 
     //we have to turn this into a client side rendered component
