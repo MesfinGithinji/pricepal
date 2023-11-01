@@ -1,6 +1,8 @@
+"use server"
+
 import axios from "axios";
 import * as cheerio from 'cheerio';
-import { extractPrice } from "../utils";
+import { extractCurrency, extractPrice ,extractDescription } from "../utils";
 
 //scraping functionality handled with this function
 export async function scrapeAmazonProduct(url:string) {
@@ -56,11 +58,53 @@ export async function scrapeAmazonProduct(url:string) {
         //get original price for the product we are tracking
         const originalPrice = extractPrice(
             //get relevant class names and IDs to return data
-            $('.priceToPay span.a-price-whole'),
-            $('a.size.base.a-color-price'),
-            $('.a-button-selected .a-color-base')
-        )
-        console.log({title} , {currentPrice} , {originalPrice});
+            $('#priceblock_ourprice'),
+            $('.a-price.a-text-price span.a-offscreen'),
+            $('#priceblock_dealprice'),
+            $('#listPrice'),
+            $('.a-size-base.a-color-price')
+        );
+
+        const outOfStock = $('#availability span').text().trim().toLowerCase() === 'currently unavailable';
+        
+        const images = 
+        $('#imgBlkFront').attr('data-a-dynamic-image') || 
+        $('#landingImage').attr('data-a-dynamic-image') || '{}'
+
+        const imageUrls = Object.keys(JSON.parse(images));
+
+        const currency = extractCurrency($('.a-price-symbol'))
+
+        const discountRate = $('.savingsPercentage').text().replace(/[-%]/g, "");
+
+        const description = extractDescription($)
+
+        //console.log({title, currentPrice , originalPrice ,outOfStock , imageUrls ,currency ,discountRate});
+        /**
+         * construct a data object rather than console.log the parsed data
+         * then return the data object
+         */
+        const data = {
+            url,
+            currency: currency || '$',
+            image: imageUrls[0],
+            title,
+            currentPrice: Number(currentPrice) || Number(originalPrice),
+            originalPrice: Number(originalPrice) || Number(currentPrice),
+            priceHistory: [],
+            discountRate: Number(discountRate),
+            category: 'category',
+            reviewsCount:100,
+            stars: 4.5,
+            isOutOfStock: outOfStock,
+            description,
+            lowestPrice: Number(currentPrice) || Number(originalPrice),
+            highestPrice: Number(originalPrice) || Number(currentPrice),
+            averagePrice: Number(currentPrice) || Number(originalPrice),
+          }
+
+        //console.log(data);
+        return data;
 
     } catch (error :any) {
         throw new Error(`Failed to Scrape Requested Product: ${error.message}`)
