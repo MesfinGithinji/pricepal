@@ -3,9 +3,13 @@ import React from 'react'
 import Image from "next/image"
 import Searchbar from './components/Searchbar'
 import HeroCarousel from './components/HeroCarousel'
+import { getAllproducts } from '@/lib/actions'
+import ProductCard from './components/ProductCard'
 
+const Home = async () => {
+  //lets get all our products directly from the database
+  const allProducts = await getAllproducts();
 
-const Home = () => {
   return (
     <>
       <section className="px-6 md:px:-20 py-24">
@@ -32,8 +36,7 @@ const Home = () => {
 
             <Searchbar/>
           </div>
-
-          <HeroCarousel/>
+            <HeroCarousel/>
         </div>
       </section>
 
@@ -41,9 +44,8 @@ const Home = () => {
         <h2 className="section-text">Trending</h2>
         
         <div className="flex flex-wrap gap-x-8 gap-y-16">
-          {['Iphone 14 Pro', 'Books','Sneakers'].map
-            ((product) => (
-              <div>{product}</div>
+          {allProducts?.map((product) => (
+              <ProductCard key={product.id} product={product} />
             ))}
         </div>
       </section>
