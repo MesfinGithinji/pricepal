@@ -62,7 +62,64 @@ export async function getProductById(productId: string) {
         connectToDB(); 
         const product = await Product.findOne({_id: productId});
         if (!product) return null;
+
+        return product;
     } catch (error) {
         console.log(error)
     }
 }
+
+export async function getAllproducts() {
+    try {
+
+        connectToDB();
+        const products = await Product.find();
+        return products;
+
+    } catch (error) {
+        console.log(error);
+    }
+    
+}
+
+export async function getSimilarProducts(productId: string) {
+    try {
+      connectToDB();
+  
+      const currentProduct = await Product.findById(productId);
+  
+      if(!currentProduct) return null;
+  
+      const similarProducts = await Product.find({
+        _id: { $ne: productId },
+      }).limit(3);
+  
+      return similarProducts;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+export async function addUserEmailToProduct(productId: string, userEmail: string) {
+    /** 
+    try {
+      const product = await Product.findById(productId);
+  
+      if(!product) return;
+  
+      const userExists = product.users.some((user: User) => user.email === userEmail);
+  
+      if(!userExists) {
+        product.users.push({ email: userEmail });
+  
+        await product.save();
+  
+        const emailContent = await generateEmailBody(product, "WELCOME");
+  
+        await sendEmail(emailContent, [userEmail]);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    */
+  }
