@@ -7,7 +7,7 @@ import { scrapeAmazonProduct } from "@/lib/scrapper";
 import { generateEmailBody, sendEmail } from "@/lib/nodemailer";
 
 export const maxDuration = 300; // function can run for a maximum of 300 seconds
-export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic"; //route segment config disabling all caching of fetch requests and always revalidating
 export const revalidate = 0;
 
 export async function GET(request: Request) {
