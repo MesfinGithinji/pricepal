@@ -14,10 +14,12 @@ const Modal = ({ productId }: Props) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [email, setEmail] = useState('');
 
+  //handling the user trigered event submitting the tracking request
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    //update our user on the product they are tracking
     await addUserEmailToProduct(productId, email);
 
     setIsSubmitting(false)
