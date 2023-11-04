@@ -5,6 +5,8 @@ import { connectToDB } from "../mongoose";
 import { scrapeAmazonProduct } from "../scrapper";
 import { getAveragePrice, getHighestPrice, getLowestPrice } from "../utils";
 import Product from "../models/product.model";
+import { User } from "@/types";
+import { generateEmailBody, sendEmail } from "../nodemailer";
 
 export async function scrapeAndStoreProduct(productUrl : string){
     if (!productUrl) return;
@@ -101,8 +103,8 @@ export async function getSimilarProducts(productId: string) {
   }
 
 export async function addUserEmailToProduct(productId: string, userEmail: string) {
-    /** 
     try {
+      //check for which product we are sending the email get productbyid
       const product = await Product.findById(productId);
   
       if(!product) return;
@@ -121,5 +123,4 @@ export async function addUserEmailToProduct(productId: string, userEmail: string
     } catch (error) {
       console.log(error);
     }
-    */
   }
