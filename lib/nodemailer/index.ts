@@ -87,7 +87,7 @@ export async function generateEmailBody(
       service: 'hotmail',
       port: 2525,
       auth: {
-        user: 'mgseniordev@outlook.com',
+        user: 'gitzmezi@outlook.com',
         pass: process.env.EMAIL_PASSWORD,
       },
       maxConnections: 1
@@ -95,7 +95,7 @@ export async function generateEmailBody(
     
     export const sendEmail = async (emailContent: EmailContent, sendTo: string[]) => {
       const mailOptions = {
-        from: 'mgseniordev@outlook.com',
+        from: 'gitzmezi@outlook.com',
         to: sendTo,
         html: emailContent.body,
         subject: emailContent.subject,
