@@ -26,7 +26,7 @@ const Home = async () => {
             </p>
             <h1 className="head-text">
               Save Money and Time using
-               <span className="text-primary"> PriceDropp</span>
+               <span className="text-primary"> PricePal</span>
             </h1>
             <p className="mt-6">
               Are you tired on missing out on terrific deals on your favourite products ?
