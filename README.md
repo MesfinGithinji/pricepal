@@ -1,11 +1,11 @@
 ## Overview
-Welcome to PriceDropp, your ultimate solution for effortlessly monitoring product prices on Amazon! PriceDropp is not just a tool; it's your trusty companion in the world of online shopping. Imagine having a personal assistant dedicated to keeping an eye on the products you love, ensuring you never miss a great deal again.
+Welcome to PricePal, your ultimate solution for effortlessly monitoring product prices on Amazon! PricePal is not just a tool; it's your trusty companion in the world of online shopping. Imagine having a personal assistant dedicated to keeping an eye on the products you love, ensuring you never miss a great deal again.
 
-PriceDropp, is ingeniously crafted to seamlessly extract product details from Amazon. Using cutting-edge web scraping technology,comprehensive data is gathered, storing it securely in a MongoDB database. But PriceDropp is more than just a data collector—it's your vigilant watchdog, ready to notify you via email whenever there's a change in your favorite product's details.
+PricePal, is ingeniously crafted to seamlessly extract product details from Amazon. Using cutting-edge web scraping technology,comprehensive data is gathered, storing it securely in a MongoDB database. But PricePal is more than just a data collector—it's your vigilant watchdog, ready to notify you via email whenever there's a change in your favorite product's details.
 
 Crafted with Next.js and Tailwind CSS, the interface boasts intuitive features. You can effortlessly search for products, delve into intricate details, and even subscribe to real-time updates.
 
-PriceDropp isn't just a tool; it's your passport to intelligent and effortless online shopping.  
+PricePal isn't just a tool; it's your passport to intelligent and effortless online shopping.  
 
 ## Technologies and Frameworks
 
