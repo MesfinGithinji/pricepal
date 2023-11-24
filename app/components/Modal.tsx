@@ -9,6 +9,7 @@ interface Props {
   productId: string
 }
 
+//props handled here
 const Modal = ({ productId }: Props) => {
   let [isOpen, setIsOpen] = useState(true)
   const [isSubmitting, setIsSubmitting] = useState(false);
